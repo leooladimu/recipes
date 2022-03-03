@@ -1,0 +1,41 @@
+{
+  "name": "recipes",
+  "version": "1.0.0",
+  "description": "buildweek",
+  "main": "index.js",
+  "scripts": {
+    "test": "cross-env DB_ENV=testing jest --watch",
+    "server": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leooladimu/recipes.git"
+  },
+  "author": "leooladimiu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leooladimu/recipes/issues"
+  },
+  "homepage": "https://github.com/leooladimu/recipes#readme",
+  "devDependencies": {
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
+  },
+  "dependencies": {
+    "@vscode/sqlite3": "^5.0.7",
+    "axios": "^0.26.0",
+    "bcryptjs": "^2.4.3",
+    "connect-session-knex": "^2.1.1",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-session": "^1.17.2",
+    "helmet": "^5.0.2",
+    "heroku": "^7.59.3",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^1.0.3"
+  }
+}
