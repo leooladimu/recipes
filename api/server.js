@@ -17,7 +17,7 @@ server.use('/api/recipes', recipesRouter);
 
 
 server.get('/', (req, res) => {
-  res.send("It's alive!");
+  res.send('TAKE TWO!!');
 });
 
 module.exports = server;
