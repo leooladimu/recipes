@@ -2,7 +2,6 @@ const router = require('express').Router();
 
 const Users = require('../users/users-model.js');
 const restricted = require('../auth/restricted-middleware.js');
-//const checkRole = require('../auth/check-role-middleware.js');
 
 //checkRole('Student'), <--this was used after the restricted middleware in line 7
 router.get('/', restricted,  (req, res) => {
