@@ -1,19 +1,17 @@
 require('dotenv').config();
 
-const express = require('express')
+const express = require('express');
+const router = express();
 
-const router = express()
 router.use(express.json());
 
-
-const knex = require('knex')
-const knexConfig = require('../knexfile')
+const knex = require('knex');
+const knexConfig = require('../knexfile');
 
 // connect database to knex
 const database = knex(knexConfig.development);
 
-
-// GET RECIPE table 
+// GET recipe table 
 router.get('/', (req, res) => {
   database('recipes').then(recipe => {
     res.status(200).json(recipe);
@@ -23,27 +21,17 @@ router.get('/', (req, res) => {
   })
 })
 
-//POST to RECIPE table
-
-
+//POST to recipe table
 router.post('/', (req, res) => {
   database('recipes').insert(req.body)
     .then(recipe => {
-      //database('recipes')
-        //.where({ id: ids[0] })
-        //.first()
-        //.then(r => {
-          res.status(200).json(recipe)
+      res.status(200).json(recipe)
     }).catch(error => {
       res.status(500).json(error.message)
     })
 })
 
-
-
-// GET RECIPE table with ID
-
-
+// GET recipe table with ID
 router.get('/:id', (req, res) => {
   database('recipes')
     .where({ id: req.params.id })
@@ -52,7 +40,7 @@ router.get('/:id', (req, res) => {
       if (specificRecipeID) {
         res.status(200).json(specificRecipeID);
       } else {
-        res.status(404).json({ message: 'RECIPE Id not found' });
+        res.status(404).json({ message: 'recipe ID not found' });
       }
     })
     .catch(error => {
@@ -60,27 +48,22 @@ router.get('/:id', (req, res) => {
     })
 })
 
-
-//PUT ROUTE
+//PUT route
 router.put('/:id', (req, res) => {
   database('recipes')
     .where({ id: req.params.id })
-    // .first()
     .update({ title: req.body.title, source: req.body.source, ingredients: req.body.ingredients, instructions: req.body.instructions, category: req.body.category, user_id: req.body.user_id })
     .then(updatedInfo => {
       if (updatedInfo) {
         res.status(200).json(updatedInfo);
       } else {
-        res.status(404).json({ message: "Houston we have a problem!" });
+        res.status(404).json({ message: "not found" });
       }
     }
     )
 })
 
-
-
-
-// DEL request to with ID
+// DELETE request to with ID
 router.delete('/:id', (req, res) => {
   database('recipes')
     .where({ id: req.params.id })
@@ -100,7 +83,6 @@ router.delete('/:id', (req, res) => {
     })
 
 })
-
 
 router.get('/now', (req, res) => {
   const now = new Date().toISOString();
