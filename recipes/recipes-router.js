@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
     console.log(error);
     res.status(500).json(error.message);
   })
-})
+});
 
 //POST to recipe table
 router.post('/', (req, res) => {
@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
     }).catch(error => {
       res.status(500).json(error.message)
     })
-})
+});
 
 // GET recipe table with ID
 router.get('/:id', (req, res) => {
@@ -46,7 +46,7 @@ router.get('/:id', (req, res) => {
     .catch(error => {
       res.status(500).json(error.message);
     })
-})
+});
 
 //PUT route
 router.put('/:id', (req, res) => {
@@ -59,9 +59,8 @@ router.put('/:id', (req, res) => {
       } else {
         res.status(404).json({ message: "not found" });
       }
-    }
-    )
-})
+    })
+});
 
 // DELETE request to with ID
 router.delete('/:id', (req, res) => {
@@ -81,8 +80,7 @@ router.delete('/:id', (req, res) => {
     }).catch(error => {
       res.status(500).json(error.message)
     })
-
-})
+});
 
 router.get('/now', (req, res) => {
   const now = new Date().toISOString();

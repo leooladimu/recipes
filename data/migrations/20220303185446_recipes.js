@@ -3,9 +3,9 @@
  * @returns { Promise<void> }
  */
 exports.up = function(knex) {
-  // don't forget the return statement 
+   
     return knex.schema.createTable('recipes', recipeColumn => {
-      //creates a primary key called id
+      
       recipeColumn.increments();
       recipeColumn.text('title').notNullable();
       recipeColumn.text('source').notNullable();
